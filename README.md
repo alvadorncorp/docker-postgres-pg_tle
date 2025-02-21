@@ -24,14 +24,14 @@ git clone https://github.com/alvadorn/docker-postgres-pg_tle.git
 cd docker-postgres-pg_tle
 ```
 
-2.  Build the desired image (example for PostgreSQL 15 and Debian 12):
+2.  Build the desired image (example for PostgreSQL 15 and Debian Bookworm):
 
 ```bash
-docker buildx build --platform linux/amd64,linux/arm64 -t alvadorncorp/postgres-pg_tle:15-debian12 --build-arg POSTGRES_VERSION=15 --build-arg POSTGRES_MAJOR=15 --build-arg DEBIAN_VERSION=12 -f debian/Dockerfile .
+docker buildx build --platform linux/amd64,linux/arm64 -t alvadorncorp/postgres-pg_tle:15-bookworm --build-arg POSTGRES_VERSION=15 --build-arg POSTGRES_MAJOR=15 --build-arg DEBIAN_VERSION=bookworm -f debian/Dockerfile .
 ```
 
 Change the values of the build arguments (`POSTGRES_VERSION`, `POSTGRES_MAJOR`, `DEBIAN_VERSION` or `ALPINE_VERSION`) and the Dockerfile name (`debian/Dockerfile` or `alpine/Dockerfile`) as needed.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [Apache License 2.0](./LICENSE).
