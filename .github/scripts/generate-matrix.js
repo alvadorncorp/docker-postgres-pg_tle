@@ -55,4 +55,4 @@ const previousMinors = parseInt(args.previousMinors, 10);
 
 const combinations = generateCombinations(semvers, oss, previousMinors);
 
-console.log(JSON.stringify(combinations));
+console.log(JSON.stringify({ include: combinations }));
