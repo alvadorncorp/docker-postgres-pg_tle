@@ -17,10 +17,10 @@ function getVersions(semver, previousMinors = 0) {
 }
 
 
-function generateCombinations(semvers, oss) {
+function generateCombinations(semvers, oss, previousMinors) {
     const combinations = [];
     for (const semver of semvers) {
-        const versions = getVersions(semver, 2);
+        const versions = getVersions(semver, previousMinors);
         for (const os of oss) {
             for (const version of versions) {
                 const [major] = version.split('.');
@@ -44,14 +44,15 @@ for (let i = 2; i < process.argv.length; i++) {
     }
 }
 
-if (!args.semvers || !args.oss) {
-    console.error('Usage: node generate-matrix.js --semvers=["14.2","13.5"] --oss=["debian","alpine"]');
+if (!args.semvers || !args.oss || !args.previousMinors) {
+    console.error('Usage: node generate-matrix.js --semvers=["14.2","13.5"] --oss=["debian","alpine"] --previousMinors=2');
     process.exit(1);
 }
 
 const semvers = JSON.parse(args.semvers);
 const oss = JSON.parse(args.oss);
+const previousMinors = parseInt(args.previousMinors, 10);
 
-const combinations = generateCombinations(semvers, oss);
+const combinations = generateCombinations(semvers, oss, previousMinors);
 
 console.log(JSON.stringify(combinations));
