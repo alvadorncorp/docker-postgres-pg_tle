@@ -15,7 +15,6 @@ jobs:
     with:
       semvers: ${{ vars.LATEST_POSTGRES_VERSIONS }}
       oss: ${{ vars.OS_VERSIONS_DEBIAN }}
-      output_file: matrix-debian.json
 
   build_debian:
     needs: generate_matrix_debian
@@ -37,7 +36,7 @@ jobs:
           file: debian/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: alvadorncorp/postgres-pg_tle:${{ matrix.postgres_version }}-${{ matrix.os_version }}.{{ env.pg_tle_version }}
+          tags: "alvadorncorp/postgres-pg_tle:${{ matrix.postgres_version }}-${{ matrix.os_version }}.${{ env.pg_tle_version }}"
           build-args: |
             POSTGRES_VERSION=${{ matrix.postgres_version }}
             POSTGRES_MAJOR=${{ matrix.postgres_major }}
@@ -49,7 +48,6 @@ jobs:
     with:
       semvers: ${{ vars.LATEST_POSTGRES_VERSIONS }}
       oss: ${{ vars.OS_VERSIONS_ALPINE }}
-      output_file: matrix-alpine.json
 
   build_alpine:
     needs: generate_matrix_alpine
@@ -71,7 +69,7 @@ jobs:
           file: alpine/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: alvadorncorp/postgres-pg_tle:${{ matrix.postgres_version }}-alpine${{ matrix.os_version }}.${{ env.pg_tle_version }}
+          tags: "alvadorncorp/postgres-pg_tle:${{ matrix.postgres_version }}-alpine${{ matrix.os_version }}-${{ env.pg_tle_version }}"
           build-args: |
             POSTGRES_VERSION=${{ matrix.postgres_version }}
             POSTGRES_MAJOR=${{ matrix.postgres_major }}
