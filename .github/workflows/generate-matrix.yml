@@ -37,5 +37,5 @@ jobs:
       - name: Generate Matrix
         id: generate-matrix-step
         run: |
-          node .github/scripts/generate-matrix.js --semvers='${{ inputs.semvers }}'' --oss='${{ inputs.oss }}' --previousMinors='${{ inputs.previousMinors }}' > ${{ inputs.output_file }}
+          node .github/scripts/generate-matrix.js --semvers='${{ inputs.semvers }}' --oss='${{ inputs.oss }}' --previousMinors='${{ inputs.previousMinors }}' > ${{ inputs.output_file }}
           echo "matrix=$(cat ${{ inputs.output_file }})" >> "$GITHUB_OUTPUT"
