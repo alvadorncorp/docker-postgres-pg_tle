@@ -6,7 +6,7 @@ function getVersions(semver, previousMinors = 0) {
 
     for (let i = 1; i <= previousMinors; i++) {
         const prevMinor = minor - i;
-        if (prevMinor >= 0) {
+        if (prevMinor > 0) {
             versions.push(`${major}.${prevMinor}`);
         }
     }
