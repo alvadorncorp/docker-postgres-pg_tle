@@ -13,7 +13,7 @@ jobs:
     with:
       semvers: ${{ vars.LATEST_POSTGRES_VERSIONS }}
       oss: ${{ vars.OS_VERSIONS_DEBIAN }}
-      output_file: matrix-debian.json
+      previousMinors: ${{ vars.PREVIOUS_MINOR }}
 
   build_debian:
     needs: generate_matrix_debian
@@ -40,7 +40,7 @@ jobs:
     with:
       semvers: ${{ vars.LATEST_POSTGRES_VERSIONS }}
       oss: ${{ vars.OS_VERSIONS_ALPINE }}
-      output_file: matrix-alpine.json
+      previousMinors: ${{ vars.PREVIOUS_MINOR }}
 
   build_alpine:
     needs: generate_matrix_alpine

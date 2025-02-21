@@ -11,8 +11,8 @@ on:
         type: string
       previousMinors:
         required: false
-        type: number
-        default: 3
+        type: string
+        default: '3'
     outputs:
       matrix:
         description: "The generated matrix"
