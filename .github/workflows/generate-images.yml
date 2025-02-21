@@ -20,6 +20,7 @@ jobs:
     needs: generate_matrix_debian
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 3
       matrix: ${{ fromJson(needs.generate_matrix_debian.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
@@ -53,6 +54,7 @@ jobs:
     needs: generate_matrix_alpine
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 3
       matrix: ${{ fromJson(needs.generate_matrix_alpine.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
